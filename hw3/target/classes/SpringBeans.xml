@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+    <context:annotation-config/>
+<context:component-scan base-package="com.DianaGolik.hw3"/>
+
+<bean id="student" class="com.DianaGolik.hw3.Student" autowire="byType">
+<constructor-arg name="name" value="Petrov Sergey"/>
+</bean>
+<bean id="teacher" class="com.DianaGolik.hw3.Teacher" >
+</bean>
+<bean id="subject" class="com.DianaGolik.hw3.Subject" autowire="byName">
+<constructor-arg name="name" value="ODM"/>
+<constructor-arg name="credits" value="3"/>
+</bean>
+<bean id="degreeA" class="com.DianaGolik.hw3.Degree">
+<constructor-arg name="degree" value="91"/>
+</bean>
+<bean id="recordBook1" class="com.DianaGolik.hw3.RecordBook" > 
+<constructor-arg name="id" value="1"/>
+<property name="records">
+<map>
+ <entry key-ref="subject" value-ref="degreeA"/>
+</map>
+</property>
+</bean>
+<bean id="bestStudentGrant" class="com.DianaGolik.hw3.BestStudentGrant" autowire="constructor">
+</bean>
+
+
+</beans>
